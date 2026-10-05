@@ -1,0 +1,3876 @@
+<div id="pv-site">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+#pv-site {
+    --black:#0b0b0a;
+    --dark:#11110f;
+    --dark2:#171612;
+    --gold:#c8a76b;
+    --gold-light:#e1c993;
+    --white:#f3eee4;
+    --muted:#a39d92;
+    --border:rgba(200,167,107,.25);
+
+    margin:0;
+    padding:0;
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter',Arial,sans-serif;
+    line-height:1.6;
+    overflow:hidden;
+}
+
+#pv-site * {
+    box-sizing:border-box;
+}
+
+#pv-site img {
+    display:block;
+    width:100%;
+}
+
+#pv-site a {
+    color:inherit;
+    text-decoration:none;
+}
+
+#pv-site button {
+    font-family:inherit;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.pv-container {
+    width:min(1180px,calc(100% - 50px));
+    margin:0 auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.pv-header {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:22px 0;
+    border-bottom:1px solid transparent;
+    transition:.4s ease;
+}
+
+.pv-header.scrolled {
+    background:rgba(11,11,10,.94);
+    backdrop-filter:blur(14px);
+    border-color:var(--border);
+    padding:15px 0;
+}
+
+.pv-header-inner {
+    width:min(1280px,calc(100% - 50px));
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.pv-logo {
+    font-family:'Playfair Display',serif;
+    font-size:21px;
+    letter-spacing:2px;
+    color:var(--white);
+    white-space:nowrap;
+}
+
+.pv-logo span {
+    color:var(--gold);
+}
+
+.pv-nav {
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.pv-nav a {
+    color:#d7d0c5;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.pv-nav a:hover {
+    color:var(--gold);
+}
+
+.pv-header-button {
+    border:1px solid var(--gold);
+    color:var(--gold)!important;
+    padding:11px 18px;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.pv-header-button:hover {
+    background:var(--gold);
+    color:var(--black)!important;
+}
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.pv-menu-button {
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:10px 14px;
+    border:1px solid var(--border);
+    background:rgba(11,11,10,.35);
+    color:var(--white);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:9px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.pv-menu-button:hover,
+.pv-menu-button.active {
+    border-color:var(--gold);
+    color:var(--gold);
+}
+
+.pv-menu-icon {
+    width:18px;
+    height:14px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+}
+
+.pv-menu-icon span {
+    display:block;
+    width:18px;
+    height:1px;
+    background:currentColor;
+    transition:.3s;
+}
+
+.pv-menu-button.active .pv-menu-icon span:first-child {
+    transform:translateY(3px) rotate(45deg);
+}
+
+.pv-menu-button.active .pv-menu-icon span:last-child {
+    transform:translateY(-3px) rotate(-45deg);
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.pv-mobile-menu {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    z-index:999;
+    background:rgba(11,11,10,.98);
+    backdrop-filter:blur(18px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .35s ease,visibility .35s ease;
+    overflow-y:auto;
+}
+
+.pv-mobile-menu.active {
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.pv-mobile-menu-inner {
+    width:min(1180px,calc(100% - 50px));
+    min-height:100%;
+    margin:0 auto;
+    padding:125px 0 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.pv-mobile-menu-label {
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:9px;
+    margin-bottom:35px;
+}
+
+.pv-mobile-nav {
+    display:flex;
+    flex-direction:column;
+}
+
+.pv-mobile-nav a {
+    display:flex;
+    align-items:center;
+    gap:22px;
+    padding:20px 0;
+    border-bottom:1px solid var(--border);
+    font-family:'Playfair Display',serif;
+    font-size:34px;
+    font-weight:400;
+    transition:.3s;
+}
+
+.pv-mobile-nav a:first-child {
+    border-top:1px solid var(--border);
+}
+
+.pv-mobile-nav a span {
+    color:var(--gold);
+    font-family:'Inter',Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:2px;
+    min-width:25px;
+}
+
+.pv-mobile-nav a:hover {
+    color:var(--gold);
+    padding-left:8px;
+}
+
+.pv-mobile-nav .pv-mobile-booking {
+    margin-top:28px;
+    justify-content:space-between;
+    border:1px solid var(--gold);
+    padding:18px 22px;
+    color:var(--gold);
+    font-family:'Inter',Arial,sans-serif;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+}
+
+.pv-mobile-nav .pv-mobile-booking:first-child {
+    border-top:1px solid var(--gold);
+}
+
+.pv-mobile-nav .pv-mobile-booking span {
+    min-width:auto;
+    font-size:20px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.pv-hero {
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:#080807;
+}
+
+.pv-hero-bg {
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(8,8,7,.93) 0%,
+            rgba(8,8,7,.67) 48%,
+            rgba(8,8,7,.32) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(8,8,7,.68),
+            transparent 50%,
+            rgba(8,8,7,.28)
+        ),
+        url('https://www.recethealth.com/assets/facility-interior-1Zv2C9fn.jpg');
+    background-size:cover;
+    background-position:center;
+    transform:scale(1.02);
+}
+
+.pv-hero-content {
+    position:relative;
+    z-index:2;
+    padding:150px 0 100px;
+    max-width:800px;
+}
+
+.pv-label {
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:10px;
+    margin-bottom:22px;
+}
+
+.pv-hero h1 {
+    font-family:'Playfair Display',serif;
+    font-weight:400;
+    font-size:clamp(58px,8vw,108px);
+    line-height:.92;
+    letter-spacing:-3px;
+    margin:0 0 28px;
+}
+
+.pv-hero h1 span {
+    color:var(--gold);
+}
+
+.pv-hero-subtitle {
+    max-width:560px;
+    color:#d1cbc0;
+    font-size:16px;
+    line-height:1.8;
+    font-weight:300;
+    margin-bottom:40px;
+}
+
+.pv-buttons {
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.pv-button {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:52px;
+    padding:0 25px;
+    border:1px solid var(--gold);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:10px;
+    transition:.35s;
+    cursor:pointer;
+}
+
+.pv-button.gold {
+    background:var(--gold);
+    color:var(--black);
+}
+
+.pv-button.gold:hover {
+    background:var(--gold-light);
+    border-color:var(--gold-light);
+}
+
+.pv-button.outline {
+    background:rgba(0,0,0,.18);
+    color:var(--white);
+    border-color:rgba(243,238,228,.35);
+}
+
+.pv-button.outline:hover {
+    color:var(--gold);
+    border-color:var(--gold);
+}
+
+.pv-scroll {
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:var(--gold);
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:4px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.pv-section {
+    padding:120px 0;
+    background:var(--black);
+}
+
+.pv-section.dark {
+    background:var(--dark);
+}
+
+.pv-heading {
+    margin-bottom:65px;
+}
+
+.pv-title {
+    font-family:'Playfair Display',serif;
+    font-weight:400;
+    font-size:clamp(42px,5vw,70px);
+    line-height:1;
+    letter-spacing:-1.5px;
+    margin:0;
+}
+
+.pv-title span {
+    color:var(--gold);
+}
+
+.pv-text {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.pv-about-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.pv-about-image {
+    height:620px;
+    overflow:hidden;
+    border:1px solid var(--border);
+}
+
+.pv-about-image img {
+    height:100%;
+    object-fit:cover;
+    transition:transform 1s ease;
+}
+
+.pv-about-image:hover img {
+    transform:scale(1.04);
+}
+
+.pv-about-copy .pv-title {
+    margin-bottom:30px;
+}
+
+.pv-about-copy .pv-text {
+    max-width:500px;
+    margin-bottom:24px;
+}
+
+.pv-details {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    border-top:1px solid var(--border);
+    padding-top:28px;
+    margin-top:30px;
+}
+
+.pv-detail-number {
+    color:var(--gold);
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+}
+
+.pv-detail-label {
+    color:var(--muted);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.pv-features {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--border);
+    border-left:1px solid var(--border);
+}
+
+.pv-feature {
+    min-height:300px;
+    padding:45px 38px;
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    transition:.4s;
+}
+
+.pv-feature:hover {
+    background:rgba(200,167,107,.035);
+}
+
+.pv-feature-number {
+    color:var(--gold);
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:55px;
+}
+
+.pv-feature h3 {
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    font-weight:400;
+    margin:0 0 15px;
+}
+
+.pv-feature p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+    margin:0;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.pv-gallery-grid {
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:12px;
+}
+
+.pv-gallery-card {
+    position:relative;
+    height:430px;
+    overflow:hidden;
+    cursor:pointer;
+    background:#151512;
+}
+
+.pv-gallery-card:nth-child(1) {
+    grid-column:span 7;
+}
+
+.pv-gallery-card:nth-child(2) {
+    grid-column:span 5;
+}
+
+.pv-gallery-card:nth-child(3) {
+    grid-column:span 5;
+}
+
+.pv-gallery-card:nth-child(4) {
+    grid-column:span 7;
+}
+
+.pv-gallery-card:nth-child(5) {
+    grid-column:span 12;
+    height:500px;
+}
+
+.pv-gallery-card img {
+    height:100%;
+    object-fit:cover;
+    transition:transform .8s ease,filter .5s ease;
+}
+
+.pv-gallery-card::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        0deg,
+        rgba(0,0,0,.72),
+        transparent 55%
+    );
+    pointer-events:none;
+}
+
+.pv-gallery-card:hover img {
+    transform:scale(1.05);
+    filter:brightness(.88);
+}
+
+.pv-gallery-info {
+    position:absolute;
+    left:28px;
+    bottom:25px;
+    z-index:2;
+}
+
+.pv-gallery-info small {
+    display:block;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:8px;
+    margin-bottom:6px;
+}
+
+.pv-gallery-info h3 {
+    font-family:'Playfair Display',serif;
+    font-size:24px;
+    font-weight:400;
+    margin:0;
+}
+
+/* =========================
+   MASTERS
+========================= */
+
+.pv-masters-heading {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:end;
+    margin-bottom:65px;
+}
+
+.pv-masters-description {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+    max-width:460px;
+}
+
+.pv-masters-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.pv-master {
+    position:relative;
+}
+
+.pv-master-number {
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:14px;
+}
+
+.pv-master-photo {
+    height:420px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    margin-bottom:24px;
+}
+
+.pv-master-photo img {
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(25%);
+    transition:.8s;
+}
+
+.pv-master:hover .pv-master-photo img {
+    transform:scale(1.04);
+    filter:grayscale(0);
+}
+
+.pv-master-role {
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:8px;
+    margin-bottom:7px;
+}
+
+.pv-master h3 {
+    font-family:'Playfair Display',serif;
+    font-size:27px;
+    font-weight:400;
+    margin:0 0 10px;
+}
+
+.pv-master p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+    margin:0;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.pv-quote {
+    min-height:600px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    background:
+        linear-gradient(
+            rgba(8,8,7,.72),
+            rgba(8,8,7,.72)
+        ),
+        url('https://aromaxxi.ru/images/aromaxxi/spa-4.jpeg')
+        center/cover;
+}
+
+.pv-quote-content {
+    max-width:850px;
+}
+
+.pv-quote-mark {
+    font-family:'Playfair Display',serif;
+    color:var(--gold);
+    font-size:90px;
+    line-height:.5;
+    margin-bottom:35px;
+}
+
+.pv-quote-text {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(35px,5vw,64px);
+    line-height:1.12;
+    font-weight:400;
+    margin:0 0 30px;
+}
+
+.pv-quote-author {
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:9px;
+}
+
+/* =========================
+   LOCATION
+========================= */
+
+.pv-location-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.pv-location-info .pv-title {
+    margin-bottom:35px;
+}
+
+.pv-location-line {
+    display:flex;
+    gap:22px;
+    padding:22px 0;
+    border-top:1px solid var(--border);
+}
+
+.pv-location-line:last-child {
+    border-bottom:1px solid var(--border);
+}
+
+.pv-location-icon {
+    color:var(--gold);
+    font-size:17px;
+    width:20px;
+}
+
+.pv-location-line strong {
+    display:block;
+    font-size:12px;
+    font-weight:500;
+    margin-bottom:4px;
+}
+
+.pv-location-line span {
+    color:var(--muted);
+    font-size:12px;
+}
+
+.pv-location-card {
+    min-height:430px;
+    border:1px solid var(--border);
+    background:
+        linear-gradient(
+            rgba(200,167,107,.03),
+            rgba(200,167,107,.03)
+        ),
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 30px,
+            rgba(200,167,107,.025) 30px,
+            rgba(200,167,107,.025) 31px
+        );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px;
+}
+
+.pv-location-card-inner {
+    max-width:400px;
+}
+
+.pv-location-card .pv-label {
+    margin-bottom:15px;
+}
+
+.pv-location-card h3 {
+    font-family:'Playfair Display',serif;
+    font-size:44px;
+    font-weight:400;
+    margin:0 0 15px;
+}
+
+.pv-location-card p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+    margin:0;
+}
+
+/* =========================
+   BOOKING
+========================= */
+
+.pv-booking {
+    padding:110px 0;
+    background:var(--dark2);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.pv-booking-inner {
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.pv-booking .pv-title {
+    margin-bottom:22px;
+}
+
+.pv-booking-text {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+    margin:0 auto 35px;
+    max-width:570px;
+}
+
+.pv-booking-contact {
+    margin-top:30px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:2;
+}
+
+.pv-booking-contact strong {
+    color:var(--gold);
+    font-weight:400;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.pv-faq-overlay {
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    background:rgba(11,11,10,.98);
+    backdrop-filter:blur(18px);
+    overflow-y:auto;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+}
+
+.pv-faq-overlay.active {
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.pv-faq-inner {
+    width:min(1000px,calc(100% - 50px));
+    min-height:100%;
+    margin:0 auto;
+    padding:130px 0 80px;
+}
+
+.pv-faq-top {
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:65px;
+}
+
+.pv-faq-heading {
+    max-width:700px;
+}
+
+.pv-faq-heading .pv-label {
+    margin-bottom:20px;
+}
+
+.pv-faq-close {
+    width:50px;
+    height:50px;
+    flex:0 0 50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--white);
+    font-size:30px;
+    font-weight:300;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.pv-faq-close:hover {
+    color:var(--gold);
+    border-color:var(--gold);
+    transform:rotate(90deg);
+}
+
+.pv-faq-list {
+    border-top:1px solid var(--border);
+}
+
+.pv-faq-item {
+    border-bottom:1px solid var(--border);
+}
+
+.pv-faq-question {
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    padding:27px 0;
+    border:0;
+    background:none;
+    color:var(--white);
+    text-align:left;
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    font-weight:400;
+    cursor:pointer;
+}
+
+.pv-faq-question:hover {
+    color:var(--gold);
+}
+
+.pv-faq-number {
+    color:var(--gold);
+    font-family:'Inter',Arial,sans-serif;
+    font-size:9px;
+    letter-spacing:2px;
+    min-width:32px;
+    margin-right:15px;
+}
+
+.pv-faq-question-text {
+    flex:1;
+}
+
+.pv-faq-plus {
+    color:var(--gold);
+    font-family:'Inter',Arial,sans-serif;
+    font-size:25px;
+    font-weight:300;
+    transition:.3s;
+}
+
+.pv-faq-item.active .pv-faq-plus {
+    transform:rotate(45deg);
+}
+
+.pv-faq-answer {
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .45s ease;
+}
+
+.pv-faq-answer-inner {
+    padding:0 55px 28px 47px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+    max-width:800px;
+}
+
+.pv-faq-bottom {
+    margin-top:65px;
+    padding-top:35px;
+    border-top:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.pv-faq-bottom-text {
+    color:var(--muted);
+    font-size:12px;
+}
+
+.pv-faq-bottom-text strong {
+    display:block;
+    color:var(--white);
+    font-family:'Playfair Display',serif;
+    font-size:22px;
+    font-weight:400;
+    margin-bottom:5px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.pv-footer {
+    padding:35px 0;
+    background:#080807;
+}
+
+.pv-footer-inner {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.pv-footer-copy {
+    color:#68645d;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.pv-footer-logo {
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+}
+
+.pv-footer-logo span {
+    color:var(--gold);
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.pv-lightbox {
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    background:rgba(0,0,0,.95);
+    backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    transition:.35s;
+}
+
+.pv-lightbox.active {
+    opacity:1;
+    visibility:visible;
+}
+
+.pv-lightbox-image {
+    max-width:90vw;
+    max-height:87vh;
+    width:auto!important;
+    height:auto!important;
+    object-fit:contain;
+    border:1px solid var(--border);
+    transform:scale(.94);
+    transition:.45s;
+}
+
+.pv-lightbox.active .pv-lightbox-image {
+    transform:scale(1);
+}
+
+.pv-lightbox-close {
+    position:absolute;
+    top:25px;
+    right:30px;
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--border);
+    background:rgba(0,0,0,.4);
+    color:var(--white);
+    font-size:28px;
+    font-weight:300;
+    cursor:pointer;
+    transition:.3s;
+    z-index:5;
+}
+
+.pv-lightbox-close:hover {
+    color:var(--gold);
+    border-color:var(--gold);
+    transform:rotate(90deg);
+}
+
+.pv-lightbox-arrow {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--border);
+    background:rgba(10,10,9,.65);
+    color:var(--white);
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    cursor:pointer;
+    transition:.3s;
+    z-index:3;
+}
+
+.pv-lightbox-arrow:hover {
+    color:var(--gold);
+    border-color:var(--gold);
+}
+
+.pv-lightbox-prev {
+    left:30px;
+}
+
+.pv-lightbox-next {
+    right:30px;
+}
+
+.pv-lightbox-caption {
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:9px;
+    text-align:center;
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.pv-reveal {
+    opacity:0;
+    transform:translateY(25px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.pv-reveal.visible {
+    opacity:1;
+    transform:none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px) {
+
+    .pv-nav {
+        display:none;
+    }
+
+    .pv-menu-button {
+        display:flex;
+    }
+
+    .pv-header-button {
+        display:none;
+    }
+
+    .pv-about-grid,
+    .pv-location-grid,
+    .pv-masters-heading {
+        grid-template-columns:1fr;
+        gap:45px;
+    }
+
+    .pv-features {
+        grid-template-columns:1fr;
+    }
+
+    .pv-masters-grid {
+        grid-template-columns:1fr;
+        gap:55px;
+    }
+
+    .pv-master-photo {
+        height:500px;
+    }
+
+    .pv-about-image {
+        height:500px;
+    }
+
+    .pv-gallery-card:nth-child(n) {
+        grid-column:span 12;
+        height:400px;
+    }
+
+    .pv-gallery-card:nth-child(5) {
+        height:420px;
+    }
+}
+
+@media(max-width:600px) {
+
+    .pv-container {
+        width:calc(100% - 30px);
+    }
+
+    .pv-header-inner {
+        width:calc(100% - 30px);
+        gap:12px;
+    }
+
+    .pv-logo {
+        font-size:17px;
+    }
+
+    .pv-menu-button {
+        padding:9px 11px;
+        font-size:8px;
+    }
+
+    .pv-mobile-menu-inner {
+        width:calc(100% - 30px);
+        padding-top:110px;
+    }
+
+    .pv-mobile-nav a {
+        font-size:27px;
+        padding:17px 0;
+    }
+
+    .pv-hero-content {
+        padding:130px 0 90px;
+    }
+
+    .pv-hero h1 {
+        font-size:57px;
+        letter-spacing:-2px;
+    }
+
+    .pv-hero-subtitle {
+        font-size:14px;
+    }
+
+    .pv-section {
+        padding:80px 0;
+    }
+
+    .pv-title {
+        font-size:44px;
+    }
+
+    .pv-about-image {
+        height:400px;
+    }
+
+    .pv-feature {
+        min-height:240px;
+        padding:30px;
+    }
+
+    .pv-feature-number {
+        margin-bottom:35px;
+    }
+
+    .pv-gallery-card:nth-child(n) {
+        height:310px;
+    }
+
+    .pv-gallery-card:nth-child(5) {
+        height:330px;
+    }
+
+    .pv-gallery-info {
+        left:20px;
+        bottom:20px;
+    }
+
+    .pv-gallery-info h3 {
+        font-size:20px;
+    }
+
+    .pv-master-photo {
+        height:430px;
+    }
+
+    .pv-quote {
+        min-height:500px;
+    }
+
+    .pv-quote-text {
+        font-size:37px;
+    }
+
+    .pv-location-card {
+        min-height:330px;
+    }
+
+    .pv-location-card h3 {
+        font-size:38px;
+    }
+
+    .pv-booking {
+        padding:80px 0;
+    }
+
+    .pv-buttons {
+        flex-direction:column;
+    }
+
+    .pv-button {
+        width:100%;
+    }
+
+    .pv-footer-inner {
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .pv-lightbox {
+        padding:15px;
+    }
+
+    .pv-lightbox-image {
+        max-width:94vw;
+        max-height:78vh;
+    }
+
+    .pv-lightbox-arrow {
+        width:42px;
+        height:42px;
+        font-size:30px;
+    }
+
+    .pv-lightbox-prev {
+        left:10px;
+    }
+
+    .pv-lightbox-next {
+        right:10px;
+    }
+
+    .pv-lightbox-close {
+        top:12px;
+        right:12px;
+    }
+
+    .pv-lightbox-caption {
+        bottom:18px;
+        max-width:65vw;
+        line-height:1.5;
+    }
+
+    /* FAQ mobile */
+
+    .pv-faq-inner {
+        width:calc(100% - 30px);
+        padding:105px 0 50px;
+    }
+
+    .pv-faq-top {
+        margin-bottom:45px;
+    }
+
+    .pv-faq-close {
+        width:45px;
+        height:45px;
+        flex-basis:45px;
+    }
+
+    .pv-faq-question {
+        font-size:21px;
+        padding:23px 0;
+        gap:15px;
+    }
+
+    .pv-faq-number {
+        min-width:27px;
+        margin-right:5px;
+    }
+
+    .pv-faq-answer-inner {
+        padding:0 25px 24px 32px;
+        font-size:12px;
+    }
+
+    .pv-faq-bottom {
+        margin-top:45px;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .pv-faq-bottom .pv-button {
+        width:100%;
+    }
+}
+</style>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="pv-header" id="pvHeader">
+
+    <div class="pv-header-inner">
+
+        <a href="#pv-top" class="pv-logo">
+            ПАРНАЯ <span>ВОЗНЯ</span>
+        </a>
+
+        <nav class="pv-nav">
+
+            <a href="#pv-about">О нас</a>
+
+            <a href="#pv-space">Пространство</a>
+
+            <a href="#pv-gallery">Галерея</a>
+
+            <a href="#pv-masters">Мастера</a>
+
+            <a href="#pv-location">Локация</a>
+
+            <!-- FAQ -->
+            <a href="#pv-faq" class="pv-faq-trigger">
+                FAQ
+            </a>
+
+        </nav>
+
+        <button
+            class="pv-menu-button"
+            id="pvMenuButton"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+        >
+
+            <span>Меню</span>
+
+            <div class="pv-menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+
+        </button>
+
+        <a
+            href="#pv-booking"
+            class="pv-header-button"
+        >
+            Забронировать
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MOBILE MENU
+========================= -->
+
+<div
+    class="pv-mobile-menu"
+    id="pvMobileMenu"
+>
+
+    <div class="pv-mobile-menu-inner">
+
+        <div class="pv-mobile-menu-label">
+            ПАРНАЯ ВОЗНЯ · СОЧИ
+        </div>
+
+        <nav class="pv-mobile-nav">
+
+            <a href="#pv-about">
+                <span>01</span>
+                О нас
+            </a>
+
+            <a href="#pv-space">
+                <span>02</span>
+                Пространство
+            </a>
+
+            <a href="#pv-gallery">
+                <span>03</span>
+                Галерея
+            </a>
+
+            <a href="#pv-masters">
+                <span>04</span>
+                Мастера
+            </a>
+
+            <a href="#pv-location">
+                <span>05</span>
+                Локация
+            </a>
+
+            <!-- FAQ -->
+            <a
+                href="#pv-faq"
+                class="pv-faq-trigger"
+            >
+                <span>06</span>
+                FAQ
+            </a>
+
+            <a
+                href="#pv-booking"
+                class="pv-mobile-booking"
+            >
+                Забронировать
+                <span>→</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="pv-hero" id="pv-top">
+
+    <div class="pv-hero-bg"></div>
+
+    <div class="pv-container">
+
+        <div class="pv-hero-content pv-reveal">
+
+            <div class="pv-label">
+                Сочи · Краснодарский край
+            </div>
+
+            <h1>
+                Парная<br>
+                <span>Возня</span>
+            </h1>
+
+            <p class="pv-hero-subtitle">
+                Баня, в которой не пьют, а прогреваются.
+                Премиальное пространство для пара,
+                отдыха и настоящего перезапуска.
+            </p>
+
+            <div class="pv-buttons">
+
+                <a
+                    href="#pv-booking"
+                    class="pv-button gold"
+                >
+                    Забронировать
+                </a>
+
+                <a
+                    href="#pv-gallery"
+                    class="pv-button outline"
+                >
+                    Смотреть пространство
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="pv-scroll">
+        Листайте вниз
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="pv-section" id="pv-about">
+
+    <div class="pv-container">
+
+        <div class="pv-about-grid">
+
+            <div class="pv-about-image pv-reveal">
+
+                <img
+                    src="https://kbk.ge/assets/spa-banya-DM2Qgd2d.jpg"
+                    alt="Интерьер парной"
+                >
+
+            </div>
+
+            <div class="pv-about-copy pv-reveal">
+
+                <div class="pv-label">
+                    О пространстве
+                </div>
+
+                <h2 class="pv-title">
+                    Здесь время<br>
+                    <span>останавливается.</span>
+                </h2>
+
+                <p class="pv-text">
+                    «Парная Возня» — место, где баня
+                    становится полноценным ритуалом отдыха.
+                    Пар, тепло, вода и спокойствие собраны
+                    в одном пространстве.
+                </p>
+
+                <p class="pv-text">
+                    Мы создали атмосферу, в которой можно
+                    отключиться от города, восстановиться
+                    и провести несколько часов исключительно
+                    для себя.
+                </p>
+
+                <div class="pv-details">
+
+                    <div>
+                        <div class="pv-detail-number">01</div>
+                        <div class="pv-detail-label">
+                            Премиальный интерьер
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="pv-detail-number">02</div>
+                        <div class="pv-detail-label">
+                            Парная и SPA
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="pv-detail-number">03</div>
+                        <div class="pv-detail-label">
+                            Бассейн
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="pv-detail-number">04</div>
+                        <div class="pv-detail-label">
+                            Индивидуальный подход
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SPACE
+========================= -->
+
+<section class="pv-section dark" id="pv-space">
+
+    <div class="pv-container">
+
+        <div class="pv-heading pv-reveal">
+
+            <div class="pv-label">
+                Пространство
+            </div>
+
+            <h2 class="pv-title">
+                Всё необходимое<br>
+                <span>для хорошего пара.</span>
+            </h2>
+
+        </div>
+
+        <div class="pv-features">
+
+            <div class="pv-feature pv-reveal">
+                <div class="pv-feature-number">
+                    01 / ПАРНАЯ
+                </div>
+
+                <h3>Настоящий жар</h3>
+
+                <p>
+                    Температура, влажность и атмосфера,
+                    которые позволяют полностью погрузиться
+                    в банный ритуал.
+                </p>
+            </div>
+
+            <div class="pv-feature pv-reveal">
+                <div class="pv-feature-number">
+                    02 / ВОДА
+                </div>
+
+                <h3>Бассейн</h3>
+
+                <p>
+                    Контраст после парной и возможность
+                    спокойно расслабиться между заходами.
+                </p>
+            </div>
+
+            <div class="pv-feature pv-reveal">
+                <div class="pv-feature-number">
+                    03 / ОТДЫХ
+                </div>
+
+                <h3>Зона релакса</h3>
+
+                <p>
+                    Пространство для общения, отдыха
+                    и восстановления после пара.
+                </p>
+            </div>
+
+            <div class="pv-feature pv-reveal">
+                <div class="pv-feature-number">
+                    04 / SPA
+                </div>
+
+                <h3>Ритуалы</h3>
+
+                <p>
+                    Возможность дополнить посещение
+                    процедурами и работой мастеров.
+                </p>
+            </div>
+
+            <div class="pv-feature pv-reveal">
+                <div class="pv-feature-number">
+                    05 / АТМОСФЕРА
+                </div>
+
+                <h3>Тишина</h3>
+
+                <p>
+                    Никакой суеты. Только тепло, вода,
+                    пар и время, которое принадлежит вам.
+                </p>
+            </div>
+
+            <div class="pv-feature pv-reveal">
+                <div class="pv-feature-number">
+                    06 / СОЧИ
+                </div>
+
+                <h3>Особенное место</h3>
+
+                <p>
+                    Банный отдых в атмосфере Сочи —
+                    вдали от обычного городского ритма.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="pv-section" id="pv-gallery">
+
+    <div class="pv-container">
+
+        <div class="pv-heading pv-reveal">
+
+            <div class="pv-label">
+                Галерея
+            </div>
+
+            <h2 class="pv-title">
+                Посмотрите<br>
+                <span>внутрь.</span>
+            </h2>
+
+        </div>
+
+        <div class="pv-gallery-grid">
+
+            <div class="pv-gallery-card pv-reveal">
+
+                <img
+                    src="https://kbk.ge/assets/spa-banya-DM2Qgd2d.jpg"
+                    alt="Парная"
+                >
+
+                <div class="pv-gallery-info">
+                    <small>01 · Парная</small>
+                    <h3>Тепло и пар</h3>
+                </div>
+
+            </div>
+
+            <div class="pv-gallery-card pv-reveal">
+
+                <img
+                    src="https://www.recethealth.com/assets/facility-interior-1Zv2C9fn.jpg"
+                    alt="Интерьер SPA"
+                >
+
+                <div class="pv-gallery-info">
+                    <small>02 · Интерьер</small>
+                    <h3>Атмосфера</h3>
+                </div>
+
+            </div>
+
+            <div class="pv-gallery-card pv-reveal">
+
+                <img
+                    src="https://i.pinimg.com/736x/0e/97/c8/0e97c82478607bcf2a8610975b90bc5b.jpg"
+                    alt="Зона отдыха"
+                >
+
+                <div class="pv-gallery-info">
+                    <small>03 · Отдых</small>
+                    <h3>Пауза</h3>
+                </div>
+
+            </div>
+
+            <div class="pv-gallery-card pv-reveal">
+
+                <img
+                    src="https://aromaxxi.ru/images/aromaxxi/spa-4.jpeg"
+                    alt="SPA пространство"
+                >
+
+                <div class="pv-gallery-info">
+                    <small>04 · SPA</small>
+                    <h3>Расслабление</h3>
+                </div>
+
+            </div>
+
+            <div class="pv-gallery-card pv-reveal">
+
+                <img
+                    src="https://prcdn.freetls.fastly.net/release_image/111441/7/111441-7-d2713aa1d84a6e11cb01b88027ed9cf7-3000x1896.jpg?auto=webp&fit=bounds&format=jpeg&height=1350&quality=85%2C65&width=1950"
+                    alt="Банный интерьер"
+                >
+
+                <div class="pv-gallery-info">
+                    <small>05 · Пространство</small>
+                    <h3>Детали</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MASTERS
+========================= -->
+
+<section class="pv-section dark" id="pv-masters">
+
+    <div class="pv-container">
+
+        <div class="pv-masters-heading">
+
+            <div class="pv-reveal">
+
+                <div class="pv-label">
+                    Наша команда
+                </div>
+
+                <h2 class="pv-title">
+                    Мастера,<br>
+                    которые знают <span>толк в паре.</span>
+                </h2>
+
+            </div>
+
+            <p class="pv-masters-description pv-reveal">
+                В «Парной Возне» работают специалисты
+                высшего уровня. У каждого свой стиль,
+                характер и фирменный подход к прогреву.
+            </p>
+
+        </div>
+
+        <div class="pv-masters-grid">
+
+            <div class="pv-master pv-reveal">
+
+                <div class="pv-master-number">
+                    01
+                </div>
+
+                <div class="pv-master-photo">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=85"
+                        alt="Мастер парной"
+                    >
+
+                </div>
+
+                <div class="pv-master-role">
+                    Мастер парной
+                </div>
+
+                <h3>Александр</h3>
+
+                <p>
+                    Специалист по работе с паром,
+                    прогревом и банными ритуалами.
+                    Индивидуально подбирает подход
+                    к каждому посещению.
+                </p>
+
+            </div>
+
+            <div class="pv-master pv-reveal">
+
+                <div class="pv-master-number">
+                    02
+                </div>
+
+                <div class="pv-master-photo">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=85"
+                        alt="Мастер русского пара"
+                    >
+
+                </div>
+
+                <div class="pv-master-role">
+                    Мастер русского пара
+                </div>
+
+                <h3>Скоро будет представлен</h3>
+
+                <p>
+                    Человек, который умеет превратить
+                    обычный заход в парную
+                    в настоящее событие.
+                </p>
+
+            </div>
+
+            <div class="pv-master pv-reveal">
+
+                <div class="pv-master-number">
+                    03
+                </div>
+
+                <div class="pv-master-photo">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=85"
+                        alt="SPA мастер"
+                    >
+
+                </div>
+
+                <div class="pv-master-role">
+                    Специалист по релаксу
+                </div>
+
+                <h3>В разработке</h3>
+
+                <p>
+                    Пока его имя держится
+                    в строжайшем секрете.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUOTE
+========================= -->
+
+<section class="pv-quote">
+
+    <div class="pv-container">
+
+        <div class="pv-quote-content pv-reveal">
+
+            <div class="pv-quote-mark">
+                “
+            </div>
+
+            <p class="pv-quote-text">
+                Иногда лучший способ
+                решить все проблемы —
+                просто хорошо прогреться.
+            </p>
+
+            <div class="pv-quote-author">
+                Парная Возня · Сочи
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCATION
+========================= -->
+
+<section class="pv-section" id="pv-location">
+
+    <div class="pv-container">
+
+        <div class="pv-location-grid">
+
+            <div class="pv-location-info pv-reveal">
+
+                <div class="pv-label">
+                    Локация
+                </div>
+
+                <h2 class="pv-title">
+                    До встречи<br>
+                    <span>в парной.</span>
+                </h2>
+
+                <div class="pv-location-line">
+
+                    <div class="pv-location-icon">
+                        ⌖
+                    </div>
+
+                    <div>
+                        <strong>Город</strong>
+                        <span>
+                            Сочи, Краснодарский край
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="pv-location-line">
+
+                    <div class="pv-location-icon">
+                        ◇
+                    </div>
+
+                    <div>
+                        <strong>Формат</strong>
+                        <span>
+                            Премиальное банное пространство
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="pv-location-line">
+
+                    <div class="pv-location-icon">
+                        ○
+                    </div>
+
+                    <div>
+                        <strong>Адрес</strong>
+                        <span>
+                            Точный адрес сообщается
+                            при подтверждении посещения
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="pv-location-card pv-reveal">
+
+                <div class="pv-location-card-inner">
+
+                    <div class="pv-label">
+                        ПАРНАЯ ВОЗНЯ
+                    </div>
+
+                    <h3>Сочи</h3>
+
+                    <p>
+                        Пространство для пара, воды,
+                        отдыха и полного перезапуска.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BOOKING
+========================= -->
+
+<section class="pv-booking" id="pv-booking">
+
+    <div class="pv-container">
+
+        <div class="pv-booking-inner pv-reveal">
+
+            <div class="pv-label">
+                Бронирование
+            </div>
+
+            <h2 class="pv-title">
+                Готовы<br>
+                <span>прогреться?</span>
+            </h2>
+
+            <p class="pv-booking-text">
+                Свяжитесь с нами удобным способом,
+                чтобы выбрать дату и время посещения.
+            </p>
+
+            <div class="pv-buttons">
+
+                <a
+                    href="tel:+79884155915"
+                    class="pv-button gold"
+                >
+                    📞 Позвонить
+                </a>
+
+                <a
+                    href="https://t.me/ban_vozny"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pv-button outline"
+                >
+                    Telegram
+                </a>
+
+                <a
+                    href="https://wa.me/79884155915"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="pv-button outline"
+                >
+                    WhatsApp
+                </a>
+
+            </div>
+
+            <div class="pv-booking-contact">
+
+                <strong>
+                    +7 (988) 415-59-15
+                </strong>
+
+                <br>
+
+                Telegram:
+                @ban_vozny
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="pv-footer">
+
+    <div class="pv-container">
+
+        <div class="pv-footer-inner">
+
+            <div class="pv-footer-copy">
+                © 2026 Парная Возня · Сочи
+            </div>
+
+            <div class="pv-footer-logo">
+                ПАРНАЯ <span>ВОЗНЯ</span>
+            </div>
+
+            <div class="pv-footer-copy">
+                Баня · SPA · Пар
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     FAQ OVERLAY
+     НЕ ЯВЛЯЕТСЯ СЕКЦИЕЙ СТРАНИЦЫ
+========================= -->
+
+<div
+    class="pv-faq-overlay"
+    id="pvFaq"
+    aria-hidden="true"
+>
+
+    <div class="pv-faq-inner">
+
+        <div class="pv-faq-top">
+
+            <div class="pv-faq-heading">
+
+                <div class="pv-label">
+                    FAQ · Парная Возня
+                </div>
+
+                <h2 class="pv-title">
+                    Часто задаваемые<br>
+                    <span>вопросы.</span>
+                </h2>
+
+            </div>
+
+            <button
+                class="pv-faq-close"
+                id="pvFaqClose"
+                type="button"
+                aria-label="Закрыть FAQ"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="pv-faq-list">
+
+
+            <!-- 01 -->
+
+            <div class="pv-faq-item">
+
+                <button
+                    class="pv-faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span class="pv-faq-number">
+                        01
+                    </span>
+
+                    <span class="pv-faq-question-text">
+                        Сколько длится минимальное посещение?
+                    </span>
+
+                    <span class="pv-faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="pv-faq-answer">
+
+                    <div class="pv-faq-answer-inner">
+                        Минимальное время посещения —
+                        2 часа.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 02 -->
+
+            <div class="pv-faq-item">
+
+                <button
+                    class="pv-faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span class="pv-faq-number">
+                        02
+                    </span>
+
+                    <span class="pv-faq-question-text">
+                        Нужно ли бронировать заранее?
+                    </span>
+
+                    <span class="pv-faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="pv-faq-answer">
+
+                    <div class="pv-faq-answer-inner">
+                        Да. Посещение осуществляется
+                        по предварительной записи.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 03 -->
+
+            <div class="pv-faq-item">
+
+                <button
+                    class="pv-faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span class="pv-faq-number">
+                        03
+                    </span>
+
+                    <span class="pv-faq-question-text">
+                        Можно ли прийти компанией?
+                    </span>
+
+                    <span class="pv-faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="pv-faq-answer">
+
+                    <div class="pv-faq-answer-inner">
+                        Да. Пространство подходит
+                        для индивидуального отдыха
+                        и посещения компанией.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 04 -->
+
+            <div class="pv-faq-item">
+
+                <button
+                    class="pv-faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span class="pv-faq-number">
+                        04
+                    </span>
+
+                    <span class="pv-faq-question-text">
+                        Есть ли парение с мастером?
+                    </span>
+
+                    <span class="pv-faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="pv-faq-answer">
+
+                    <div class="pv-faq-answer-inner">
+                        Да. Парение с мастером можно
+                        дополнительно заказать при
+                        бронировании посещения.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 05 -->
+
+            <div class="pv-faq-item">
+
+                <button
+                    class="pv-faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span class="pv-faq-number">
+                        05
+                    </span>
+
+                    <span class="pv-faq-question-text">
+                        Что взять с собой?
+                    </span>
+
+                    <span class="pv-faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="pv-faq-answer">
+
+                    <div class="pv-faq-answer-inner">
+                        Перед посещением мы сообщим
+                        всё необходимое и ответим
+                        на ваши вопросы.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 06 -->
+
+            <div class="pv-faq-item">
+
+                <button
+                    class="pv-faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span class="pv-faq-number">
+                        06
+                    </span>
+
+                    <span class="pv-faq-question-text">
+                        Как забронировать посещение?
+                    </span>
+
+                    <span class="pv-faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+                <div class="pv-faq-answer">
+
+                    <div class="pv-faq-answer-inner">
+                        Позвоните нам или напишите
+                        в Telegram / WhatsApp.
+                        Мы подберём удобную дату
+                        и время посещения.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="pv-faq-bottom">
+
+            <div class="pv-faq-bottom-text">
+
+                <strong>
+                    Остались вопросы?
+                </strong>
+
+                Мы с удовольствием всё расскажем
+                перед посещением.
+
+            </div>
+
+            <a
+                href="#pv-booking"
+                class="pv-button gold pv-faq-booking"
+            >
+                Забронировать →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     LIGHTBOX
+========================= -->
+
+<div
+    class="pv-lightbox"
+    id="pvLightbox"
+>
+
+    <button
+        class="pv-lightbox-close"
+        id="pvLightboxClose"
+        aria-label="Закрыть"
+    >
+        ×
+    </button>
+
+    <button
+        class="pv-lightbox-arrow pv-lightbox-prev"
+        id="pvLightboxPrev"
+        aria-label="Предыдущее фото"
+    >
+        ‹
+    </button>
+
+    <img
+        class="pv-lightbox-image"
+        id="pvLightboxImage"
+        src=""
+        alt=""
+    >
+
+    <button
+        class="pv-lightbox-arrow pv-lightbox-next"
+        id="pvLightboxNext"
+        aria-label="Следующее фото"
+    >
+        ›
+    </button>
+
+    <div
+        class="pv-lightbox-caption"
+        id="pvLightboxCaption"
+    ></div>
+
+</div>
+
+
+<script>
+(function() {
+
+    'use strict';
+
+
+    function pvInit() {
+
+        const site =
+            document.getElementById('pv-site');
+
+        if (!site) {
+            return;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        const header =
+            document.getElementById('pvHeader');
+
+
+        function updateHeader() {
+
+            if (!header) {
+                return;
+            }
+
+            if (window.scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+        }
+
+
+        window.addEventListener(
+            'scroll',
+            updateHeader,
+            {passive:true}
+        );
+
+        updateHeader();
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        const menuButton =
+            document.getElementById('pvMenuButton');
+
+        const mobileMenu =
+            document.getElementById('pvMobileMenu');
+
+
+        function openMenu() {
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            mobileMenu.classList.add('active');
+
+            menuButton.classList.add('active');
+
+            menuButton.setAttribute(
+                'aria-expanded',
+                'true'
+            );
+
+            menuButton.setAttribute(
+                'aria-label',
+                'Закрыть меню'
+            );
+
+            document.body.style.overflow =
+                'hidden';
+
+        }
+
+
+        function closeMenu() {
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            mobileMenu.classList.remove('active');
+
+            menuButton.classList.remove('active');
+
+            menuButton.setAttribute(
+                'aria-expanded',
+                'false'
+            );
+
+            menuButton.setAttribute(
+                'aria-label',
+                'Открыть меню'
+            );
+
+            if (
+                !document.getElementById('pvFaq')
+                    ?.classList.contains('active') &&
+                !document.getElementById('pvLightbox')
+                    ?.classList.contains('active')
+            ) {
+
+                document.body.style.overflow = '';
+
+            }
+
+        }
+
+
+        if (menuButton && mobileMenu) {
+
+            menuButton.addEventListener(
+                'click',
+                function(event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    if (
+                        mobileMenu.classList.contains(
+                            'active'
+                        )
+                    ) {
+
+                        closeMenu();
+
+                    } else {
+
+                        openMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        const faq =
+            document.getElementById('pvFaq');
+
+        const faqClose =
+            document.getElementById('pvFaqClose');
+
+        const faqTriggers =
+            site.querySelectorAll(
+                '.pv-faq-trigger'
+            );
+
+        const faqQuestions =
+            site.querySelectorAll(
+                '.pv-faq-question'
+            );
+
+
+        function openFaq() {
+
+            if (!faq) {
+                return;
+            }
+
+            closeMenu();
+
+            faq.classList.add('active');
+
+            faq.setAttribute(
+                'aria-hidden',
+                'false'
+            );
+
+            document.body.style.overflow =
+                'hidden';
+
+        }
+
+
+        function closeFaq() {
+
+            if (!faq) {
+                return;
+            }
+
+            faq.classList.remove('active');
+
+            faq.setAttribute(
+                'aria-hidden',
+                'true'
+            );
+
+            if (
+                !document.getElementById('pvLightbox')
+                    ?.classList.contains('active')
+            ) {
+
+                document.body.style.overflow =
+                    '';
+
+            }
+
+        }
+
+
+        faqTriggers.forEach(
+            function(link) {
+
+                link.addEventListener(
+                    'click',
+                    function(event) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+                        openFaq();
+
+                    }
+                );
+
+            }
+        );
+
+
+        if (faqClose) {
+
+            faqClose.addEventListener(
+                'click',
+                function(event) {
+
+                    event.preventDefault();
+
+                    closeFaq();
+
+                }
+            );
+
+        }
+
+
+        if (faq) {
+
+            faq.addEventListener(
+                'click',
+                function(event) {
+
+                    if (
+                        event.target === faq
+                    ) {
+
+                        closeFaq();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           FAQ ACCORDION
+        ========================= */
+
+        faqQuestions.forEach(
+            function(question) {
+
+                question.addEventListener(
+                    'click',
+                    function() {
+
+                        const item =
+                            question.closest(
+                                '.pv-faq-item'
+                            );
+
+                        if (!item) {
+                            return;
+                        }
+
+                        const answer =
+                            item.querySelector(
+                                '.pv-faq-answer'
+                            );
+
+                        if (!answer) {
+                            return;
+                        }
+
+                        const isActive =
+                            item.classList.contains(
+                                'active'
+                            );
+
+
+                        /*
+                         * Закрываем остальные вопросы.
+                         */
+
+                        site
+                            .querySelectorAll(
+                                '.pv-faq-item.active'
+                            )
+                            .forEach(
+                                function(otherItem) {
+
+                                    if (
+                                        otherItem !== item
+                                    ) {
+
+                                        otherItem
+                                            .classList
+                                            .remove(
+                                                'active'
+                                            );
+
+                                        const otherAnswer =
+                                            otherItem
+                                                .querySelector(
+                                                    '.pv-faq-answer'
+                                                );
+
+                                        if (
+                                            otherAnswer
+                                        ) {
+
+                                            otherAnswer
+                                                .style
+                                                .maxHeight =
+                                                null;
+
+                                        }
+
+                                        const otherQuestion =
+                                            otherItem
+                                                .querySelector(
+                                                    '.pv-faq-question'
+                                                );
+
+                                        if (
+                                            otherQuestion
+                                        ) {
+
+                                            otherQuestion
+                                                .setAttribute(
+                                                    'aria-expanded',
+                                                    'false'
+                                                );
+
+                                        }
+
+                                    }
+
+                                }
+                            );
+
+
+                        if (isActive) {
+
+                            item.classList.remove(
+                                'active'
+                            );
+
+                            answer.style.maxHeight =
+                                null;
+
+                            question.setAttribute(
+                                'aria-expanded',
+                                'false'
+                            );
+
+                        } else {
+
+                            item.classList.add(
+                                'active'
+                            );
+
+                            answer.style.maxHeight =
+                                answer.scrollHeight +
+                                'px';
+
+                            question.setAttribute(
+                                'aria-expanded',
+                                'true'
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================
+           FAQ → BOOKING
+        ========================= */
+
+        const faqBooking =
+            site.querySelector(
+                '.pv-faq-booking'
+            );
+
+
+        if (faqBooking) {
+
+            faqBooking.addEventListener(
+                'click',
+                function(event) {
+
+                    const booking =
+                        document.getElementById(
+                            'pv-booking'
+                        );
+
+                    if (!booking) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    closeFaq();
+
+                    setTimeout(
+                        function() {
+
+                            const headerHeight =
+                                header
+                                    ? header.offsetHeight
+                                    : 0;
+
+                            const targetPosition =
+                                booking
+                                    .getBoundingClientRect()
+                                    .top +
+                                window.pageYOffset -
+                                headerHeight;
+
+                            window.scrollTo({
+
+                                top:
+                                    targetPosition,
+
+                                behavior:
+                                    'smooth'
+
+                            });
+
+                        },
+                        100
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           MOBILE NAVIGATION
+        ========================= */
+
+        const mobileLinks =
+            site.querySelectorAll(
+                '.pv-mobile-nav a'
+            );
+
+
+        mobileLinks.forEach(
+            function(link) {
+
+                link.addEventListener(
+                    'click',
+                    function(event) {
+
+                        /*
+                         * FAQ открываем как overlay,
+                         * а не как обычную секцию.
+                         */
+
+                        if (
+                            link.classList.contains(
+                                'pv-faq-trigger'
+                            )
+                        ) {
+
+                            event.preventDefault();
+
+                            openFaq();
+
+                            return;
+
+                        }
+
+
+                        const targetId =
+                            link.getAttribute(
+                                'href'
+                            );
+
+                        if (
+                            !targetId ||
+                            targetId === '#'
+                        ) {
+                            return;
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+                        closeMenu();
+
+
+                        setTimeout(
+                            function() {
+
+                                const headerHeight =
+                                    header
+                                        ? header.offsetHeight
+                                        : 0;
+
+                                const targetPosition =
+                                    target
+                                        .getBoundingClientRect()
+                                        .top +
+                                    window.pageYOffset -
+                                    headerHeight;
+
+                                window.scrollTo({
+
+                                    top:
+                                        targetPosition,
+
+                                    behavior:
+                                        'smooth'
+
+                                });
+
+                            },
+                            100
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================
+           ESC
+        ========================= */
+
+        document.addEventListener(
+            'keydown',
+            function(event) {
+
+                if (
+                    event.key !== 'Escape'
+                ) {
+                    return;
+                }
+
+
+                if (
+                    faq &&
+                    faq.classList.contains(
+                        'active'
+                    )
+                ) {
+
+                    closeFaq();
+
+                    return;
+
+                }
+
+
+                if (
+                    mobileMenu &&
+                    mobileMenu.classList.contains(
+                        'active'
+                    )
+                ) {
+
+                    closeMenu();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           CLICK OUTSIDE MOBILE MENU
+        ========================= */
+
+        if (mobileMenu) {
+
+            mobileMenu.addEventListener(
+                'click',
+                function(event) {
+
+                    if (
+                        event.target ===
+                        mobileMenu
+                    ) {
+
+                        closeMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           SMOOTH SCROLL
+        ========================= */
+
+        site
+            .querySelectorAll(
+                'a[href^="#"]'
+            )
+            .forEach(
+                function(link) {
+
+                    if (
+                        link.closest(
+                            '.pv-mobile-nav'
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    /*
+                     * FAQ не должен попадать
+                     * в обычный smooth scroll.
+                     */
+
+                    if (
+                        link.classList.contains(
+                            'pv-faq-trigger'
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    link.addEventListener(
+                        'click',
+                        function(event) {
+
+                            const targetId =
+                                this.getAttribute(
+                                    'href'
+                                );
+
+                            if (
+                                !targetId ||
+                                targetId === '#'
+                            ) {
+                                return;
+                            }
+
+
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+                            if (!target) {
+                                return;
+                            }
+
+
+                            event.preventDefault();
+
+
+                            const headerHeight =
+                                header
+                                    ? header.offsetHeight
+                                    : 0;
+
+                            const targetPosition =
+                                target
+                                    .getBoundingClientRect()
+                                    .top +
+                                window.pageYOffset -
+                                headerHeight;
+
+
+                            window.scrollTo({
+
+                                top:
+                                    targetPosition,
+
+                                behavior:
+                                    'smooth'
+
+                            });
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =========================
+           REVEAL
+        ========================= */
+
+        const revealElements =
+            site.querySelectorAll(
+                '.pv-reveal'
+            );
+
+
+        if (
+            'IntersectionObserver'
+            in window
+        ) {
+
+            const revealObserver =
+                new IntersectionObserver(
+                    function(entries) {
+
+                        entries.forEach(
+                            function(entry) {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target
+                                        .classList
+                                        .add(
+                                            'visible'
+                                        );
+
+                                    revealObserver
+                                        .unobserve(
+                                            entry.target
+                                        );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold:.12
+                    }
+                );
+
+
+            revealElements.forEach(
+                function(element) {
+
+                    revealObserver.observe(
+                        element
+                    );
+
+                }
+            );
+
+        } else {
+
+            revealElements.forEach(
+                function(element) {
+
+                    element.classList.add(
+                        'visible'
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        const lightbox =
+            document.getElementById(
+                'pvLightbox'
+            );
+
+        const lightboxImage =
+            document.getElementById(
+                'pvLightboxImage'
+            );
+
+        const lightboxCaption =
+            document.getElementById(
+                'pvLightboxCaption'
+            );
+
+        const lightboxClose =
+            document.getElementById(
+                'pvLightboxClose'
+            );
+
+        const lightboxPrev =
+            document.getElementById(
+                'pvLightboxPrev'
+            );
+
+        const lightboxNext =
+            document.getElementById(
+                'pvLightboxNext'
+            );
+
+        const galleryCards =
+            Array.from(
+                site.querySelectorAll(
+                    '.pv-gallery-card'
+                )
+            );
+
+
+        let currentImage = 0;
+
+
+        function updateLightbox() {
+
+            const card =
+                galleryCards[currentImage];
+
+            if (
+                !card ||
+                !lightboxImage
+            ) {
+                return;
+            }
+
+
+            const image =
+                card.querySelector('img');
+
+            const small =
+                card.querySelector('small');
+
+            const title =
+                card.querySelector('h3');
+
+
+            if (!image) {
+                return;
+            }
+
+
+            lightboxImage.src =
+                image.src;
+
+            lightboxImage.alt =
+                image.alt || '';
+
+
+            if (
+                small &&
+                title &&
+                lightboxCaption
+            ) {
+
+                lightboxCaption.textContent =
+                    small.textContent.trim() +
+                    ' · ' +
+                    title.textContent.trim();
+
+            } else if (
+                lightboxCaption
+            ) {
+
+                lightboxCaption.textContent =
+                    image.alt || '';
+
+            }
+
+        }
+
+
+        function openLightbox(index) {
+
+            if (!lightbox) {
+                return;
+            }
+
+            currentImage = index;
+
+            updateLightbox();
+
+            lightbox.classList.add(
+                'active'
+            );
+
+            document.body.style.overflow =
+                'hidden';
+
+        }
+
+
+        function closeLightbox() {
+
+            if (!lightbox) {
+                return;
+            }
+
+            lightbox.classList.remove(
+                'active'
+            );
+
+
+            if (
+                !faq ||
+                !faq.classList.contains('active')
+            ) {
+
+                document.body.style.overflow =
+                    '';
+
+            }
+
+
+            setTimeout(
+                function() {
+
+                    if (
+                        !lightbox.classList
+                            .contains('active') &&
+                        lightboxImage
+                    ) {
+
+                        lightboxImage.src = '';
+
+                    }
+
+                },
+                350
+            );
+
+        }
+
+
+        function nextImage() {
+
+            if (
+                !galleryCards.length
+            ) {
+                return;
+            }
+
+            currentImage++;
+
+
+            if (
+                currentImage >=
+                galleryCards.length
+            ) {
+
+                currentImage = 0;
+
+            }
+
+
+            updateLightbox();
+
+        }
+
+
+        function previousImage() {
+
+            if (
+                !galleryCards.length
+            ) {
+                return;
+            }
+
+            currentImage--;
+
+
+            if (
+                currentImage < 0
+            ) {
+
+                currentImage =
+                    galleryCards.length - 1;
+
+            }
+
+
+            updateLightbox();
+
+        }
+
+
+        galleryCards.forEach(
+            function(card,index) {
+
+                card.addEventListener(
+                    'click',
+                    function() {
+
+                        openLightbox(index);
+
+                    }
+                );
+
+            }
+        );
+
+
+        if (lightboxNext) {
+
+            lightboxNext.addEventListener(
+                'click',
+                nextImage
+            );
+
+        }
+
+
+        if (lightboxPrev) {
+
+            lightboxPrev.addEventListener(
+                'click',
+                previousImage
+            );
+
+        }
+
+
+        if (lightboxClose) {
+
+            lightboxClose.addEventListener(
+                'click',
+                closeLightbox
+            );
+
+        }
+
+
+        if (lightbox) {
+
+            lightbox.addEventListener(
+                'click',
+                function(event) {
+
+                    if (
+                        event.target ===
+                        lightbox
+                    ) {
+
+                        closeLightbox();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           KEYBOARD LIGHTBOX
+        ========================= */
+
+        document.addEventListener(
+            'keydown',
+            function(event) {
+
+                if (
+                    !lightbox ||
+                    !lightbox.classList.contains(
+                        'active'
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key === 'Escape'
+                ) {
+
+                    closeLightbox();
+
+                }
+
+
+                if (
+                    event.key === 'ArrowRight'
+                ) {
+
+                    nextImage();
+
+                }
+
+
+                if (
+                    event.key === 'ArrowLeft'
+                ) {
+
+                    previousImage();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           MOBILE SWIPE
+        ========================= */
+
+        let touchStartX = 0;
+
+
+        if (lightbox) {
+
+            lightbox.addEventListener(
+                'touchstart',
+                function(event) {
+
+                    if (
+                        !event.touches ||
+                        !event.touches[0]
+                    ) {
+
+                        return;
+
+                    }
+
+                    touchStartX =
+                        event.touches[0]
+                            .clientX;
+
+                },
+                {
+                    passive:true
+                }
+            );
+
+
+            lightbox.addEventListener(
+                'touchend',
+                function(event) {
+
+                    if (
+                        !event.changedTouches ||
+                        !event.changedTouches[0]
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const touchEndX =
+                        event.changedTouches[0]
+                            .clientX;
+
+                    const difference =
+                        touchStartX -
+                        touchEndX;
+
+
+                    if (
+                        Math.abs(difference) < 50
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        difference > 0
+                    ) {
+
+                        nextImage();
+
+                    } else {
+
+                        previousImage();
+
+                    }
+
+                },
+                {
+                    passive:true
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       START
+    ========================= */
+
+    if (
+        document.readyState ===
+        'loading'
+    ) {
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            pvInit,
+            {
+                once:true
+            }
+        );
+
+    } else {
+
+        pvInit();
+
+    }
+
+})();
+</script>
+
+</div>
